@@ -1,0 +1,27 @@
+name: Create Weekly Folder
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # 매주 월요일 00:00에 실행
+
+jobs:
+  create-folder-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create weekly folder
+        run: |
+          TODAY=$(date +"%m%d")  # MMDD 형식으로 오늘 날짜 가져오기
+          mkdir -p $TODAY
+          echo "This file was automatically created on $(date)" > $TODAY/README.md
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Create folder for $TODAY"
+          git push origin main
