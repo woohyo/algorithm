@@ -3,7 +3,7 @@ name: Create Weekly Folder
 on:
   workflow_dispatch: 
   schedule:
-    - cron: '30 0 * * 1' # 매주 월요일 00:00에 실행
+    - cron: '0 0 * * 1' # 매주 월요일 00:00에 실행
 
 permissions:
   contents: write
@@ -18,11 +18,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create weekly folder
+      - name: Create weekly folder in woo and hyo
         run: |
           TODAY=$(date +"%m%d")  # MMDD 형식으로 오늘 날짜 가져오기
-          mkdir -p $TODAY
-          echo "This file was automatically created on $(date)" > $TODAY/README.md
+          mkdir -p woo/$TODAY
+          mkdir -p hyo/$TODAY
+          echo "This file was automatically created on $(date)" > woo/$TODAY/README.md
+          echo "This file was automatically created on $(date)" > hyo/$TODAY/README.md
 
       - name: Commit and push changes
         run: |
@@ -32,6 +34,6 @@ jobs:
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit."
           else
-            git commit -m "Create folder for $TODAY"
+            git commit -m "Create folder for $TODAY in woo and hyo"
             git push origin main
           fi
