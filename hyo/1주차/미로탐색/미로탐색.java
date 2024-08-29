@@ -1,8 +1,6 @@
-package 미로찾기;
-
 import java.util.*;
 
-public class 미로찾기 {
+public class 미로탐색 {
     static int n, m;
     static int[][] maze;
     static boolean[][] visited;
