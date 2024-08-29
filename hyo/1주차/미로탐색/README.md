@@ -1,4 +1,4 @@
-# [#2178 2178_미로탐색](https://www.acmicpc.net/problem/2178)
+# [#2178 미로탐색](https://www.acmicpc.net/problem/2178)
 
 ---
 
