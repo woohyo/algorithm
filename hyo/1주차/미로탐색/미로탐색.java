@@ -16,8 +16,8 @@ public class 미로탐색 {
 
         // 미로구조 생성
         for (int i = 0; i < n; i++) {
+            String line = sc.next();
             for (int j = 0; j < m; j++) {
-                String line = sc.next();
                 maze[i][j] = line.charAt(j) - '0';
             }
         }
