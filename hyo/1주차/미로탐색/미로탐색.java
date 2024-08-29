@@ -11,6 +11,8 @@ public class 미로탐색 {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
+        maze = new int[n][m];
+        visited = new boolean[n][m];
 
         // 미로구조 생성
         for (int i = 0; i < n; i++) {
