@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class 데이터분석 {
 
     public int[][] solution(int[][] data, String ext, int val_ext, String sort_by) {
         int[][] answer = {};
@@ -14,8 +14,8 @@ class Solution {
             }
         }
         // 정렬
-        Arrays.sort(answer, (a, b) -> Integer.compare(a[sortIdx], b[sortIdx]));
-        
+        // Arrays.sort(answer, (a, b) -> Integer.compare(a[sortIdx], b[sortIdx]));
+        Arrays.sort(answer, Comparator.comparingInt(a -> a[sortIdx]));
         return answer;
     }
     
