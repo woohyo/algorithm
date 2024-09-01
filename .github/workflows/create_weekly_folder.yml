@@ -1,17 +1,13 @@
 name: Create Weekly Folder
-
 on:
   workflow_dispatch: 
   schedule:
-    - cron: '0 15 * * 0' # 매주 일요일 15:00 UTC에 실행 (KST 월요일 00:00)
-
+    - cron: '0 16 * * 0' # 매주 일요일 15:00 UTC에 실행 (KST 월요일 00:00)
 permissions:
   contents: write
-
 jobs:
   create-folder-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
