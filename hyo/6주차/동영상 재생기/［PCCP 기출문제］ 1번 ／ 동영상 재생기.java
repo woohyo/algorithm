@@ -29,8 +29,6 @@ class Solution {
             }
 
             posSec = isOpSection(posSec, OP_ST_SEC, OP_EN_SEC) ? OP_EN_SEC : posSec;
-            System.out.println("명령어: " + command + ", pos:"  + posSec);
-
         }
         return secondsToTime(posSec);
     }
