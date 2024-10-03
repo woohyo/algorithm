@@ -2,37 +2,31 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String s) {
-        ArrayList<Integer> resultDstList = new ArrayList<>();
-        HashMap<Integer, Character> charIdxMap = new HashMap<>();
+        int[] answer = new int[s.length()];
+        HashMap<Character, Integer> charIdxMap = new HashMap<>();
 
         for(int i = 0; i < s.length(); i++) {
-            int nearCharDst = -1;
+            int nearCharDistance = -1;
             char targetChar = s.charAt(i);
-            if(i != 0 && containsValueForChar(charIdxMap, targetChar)) {
-                nearCharDst = i - getMaxKeyForChar(charIdxMap, targetChar);
+            if(i != 0 && containsKeyForChar(charIdxMap, targetChar)) {
+                nearCharDistance = i - getValueForChar(charIdxMap, targetChar);
             }
-            charIdxMap.put(i, targetChar);
-            resultDstList.add(nearCharDst);
+            charIdxMap.put(targetChar, i);
+            answer[i] = nearCharDistance;
         }
-        return resultDstList.stream().mapToInt(i -> i).toArray();
+        return answer;
     }
 
-    public boolean containsValueForChar(HashMap<Integer, Character> map, char targetChar) {
-        for (HashMap.Entry<Integer, Character> entry : map.entrySet()) {
-            if (entry.getValue() == targetChar) {
-                return true;
-            }
-        }
-        return false;
+    public boolean containsKeyForChar(HashMap<Character, Integer> map, char targetChar) {
+        return map.keySet().stream()
+                .anyMatch(c -> c == targetChar);
     }
 
-    public int getMaxKeyForChar(HashMap<Integer, Character> map, char targetChar) {
-        int maxKey = 0;
-        for (HashMap.Entry<Integer, Character> entry : map.entrySet()) {
-            if (entry.getValue() == targetChar && entry.getKey() > maxKey) {
-                maxKey = entry.getKey();
-            }
+    public int getValueForChar(HashMap<Character, Integer> map, char targetChar) {
+        int value = 0;
+        for (HashMap.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getKey() == targetChar) value =  entry.getValue();
         }
-        return maxKey;
+        return value;
     }
 }
