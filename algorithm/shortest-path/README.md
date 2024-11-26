@@ -22,10 +22,10 @@
 ![dijkstra.png](https://github.com/woohyo/algorithm/raw/main/image/dijkstra.png)
 
 ### 동작 과정
-1. 출발 노드 확정 
-2. 거리 갱신 
-3. 최단거리인 노드 방문
-4. 노드 방문 체크
+1. 출발 노드 확정
+2. 거리 초기화
+3. 간선 확인 및 거리 갱신
+4. 최단거리인 노드 방문
 5. 2~4 반복
 
 거리 + 경로 까지 구하기 위해선 배열이 2개 필요
@@ -133,8 +133,8 @@ public static int[] dijkstra(List<List<Edge>> graph, int start, int n) {
                 int newDist = distances[currentNode] + edge.weight;
 
                 if (newDist < distances[edge.to]) {
-                distances[edge.to] = newDist;
-                pq.add(new int[]{edge.to, newDist});
+                    distances[edge.to] = newDist;
+                    pq.add(new int[]{edge.to, newDist});
                 }
             }
         }
